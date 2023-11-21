@@ -1,0 +1,26 @@
+extends layouts/main-layout.pug 
+block content
+    +navbar(UserDetails)
+    .container1 
+        .home-row 
+            nav.sidebar 
+                ul 
+                    li 
+                        a(href="#") 
+                            ion-icon(name="home")
+                            | Home
+                    li 
+                        a(href="#") 
+                            ion-icon(name="person")
+                            | Profile
+                    li 
+                        a(href="#") 
+                            ion-icon(name="notifications")
+                            | Notify 
+        .main-container 
+            +createPostForm(UserDetails) 
+            .messages
+    script(src="js/home.js")                       
+
+        
+        

@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{tittle}
+        link(rel="stylesheet", href="/css/style.css")
+        link(rel="icon", type="images/ico",href="/images/logonavin.png")
+
+    body 
+        .form-container 
+            h1 Welcome Back! 
+            p Login to access your accout 
+            form#frm(method="POST")
+                p.errorMessage #{errormsg}
+                .row    
+                    input(type="text" required="" name="username")
+                    label Email or Username 
+                
+                .row    
+                    input(type="password" required="" name="password")
+                    label Password        
+                
+                .row 
+                    button(type="submit") Login Now  
+            p Not a Member? 
+                a(href="/register") Signup here 
+                br
+                a(href="#") Forget Password ?     

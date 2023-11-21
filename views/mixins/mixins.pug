@@ -1,0 +1,20 @@
+mixin navbar(UserDetails)
+    .navbar 
+        h3 Navin
+        ul 
+            li 
+                a(href="/home") Home
+            li 
+                a(href="/settings") Settings
+            li 
+                a(href="") Welcome #{UserDetails.name}
+            li 
+                a(href="/logout") Logout  
+mixin createPostForm(UserDetails)
+    .post-container 
+        .user-pic 
+            img(src=UserDetails.profilepic, alt="User Profile")  
+        .textarea 
+            textarea#postTextarea(placeholder="What's Happening?")  
+            .button 
+                button#btnPost(disabled="") Post                               

@@ -1,0 +1,27 @@
+extends layouts/form-layout.pug
+block content  
+    .form-container 
+        h1 join us today 
+        p Sign up to be a member 
+        form#frm(method="POST") 
+            p.errorMessage #{errormsg}
+            .row    
+                input#name(type="text" required="" name="name" value=name)
+                label Name 
+            .row    
+                input#email(type="text" required="" name="email" value=email)
+                label Email
+            .row    
+                input#username(type="text" required="" name="username" value=username)
+                label UserName     
+            .row    
+                input#password(type="password" required="" name="password" )
+                label Password        
+            .row    
+                input#conform(type="password" required="" name="confrom" )
+                label Conform Password   
+            .row 
+                button(type="submit") Sign Up 
+        p Already a Member? 
+            a(href="/login") Login 
+    script(src="/js/register.js",defer="")        
