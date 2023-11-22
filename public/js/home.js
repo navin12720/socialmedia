@@ -50,11 +50,25 @@ btnPost.addEventListener("click", function (e) {
 
 function createPost(post) {
   // console.log(new Date(post.createdAt));
+  const isRetweet = post.retweetdata !== undefined;
+  const Retweetedby = isRetweet ? post.postedby.username : null;
+  post = isRetweet ? post.retweetdata : post;
+  let retweettext = "";
+  if (isRetweet) {
+    retweettext = `
+    <span>
+      <ion-icon name="repeat-outline"></ion-icon>
+      Retweeted by <a href='/profile/${Retweetedby}'>@${Retweetedby}</a>
+    </span>  
+    `;
+  }
   const img = post.postedby.profilepic;
   const activebtn = post.likes.includes(userLoggedIn._id) ? "active" : "";
+  const activeretbtn = post.retweets.includes(userLoggedIn._id) ? "active" : "";
   let date = new Date(post.createdAt);
   let data = `
   <div class="post" data-id='${post._id}'>
+    <div class="retweettext">${retweettext}</div>
     <div class="content">
       <div class="user-pic" >
       <img src='${img}' alt='profile image' width="100px " >
@@ -70,7 +84,10 @@ function createPost(post) {
         <div class="body">${post.content}</div>
         <div class="footer">
         <button><ion-icon name="chatbubble-outline"></ion-icon></button>
-        <button class="retweetbtn"><ion-icon name="repeat-outline"></ion-icon></button>
+        <button class="retweetbtn ${activeretbtn}">
+          <ion-icon name="repeat-outline"></ion-icon>
+          <span>${post.retweets.length || ""}</span>
+        </button>
         <button class="likebtn ${activebtn}">
           <ion-icon name="heart-outline"></ion-icon>
           <span>${post.likes.length || ""}</span>

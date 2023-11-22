@@ -6,8 +6,10 @@ const Post = require("../../schemas/postschema");
 router.get("/", (req, res) => {
   Post.find()
     .populate("postedby")
+    .populate("retweetdata")
     .sort({ createAt: 1 })
-    .then((results) => {
+    .then(async (results) => {
+      results = await User.populate(results, { path: "retweetdata.postedby" });
       return res.status(200).send(results);
     })
     .catch((err) => {
@@ -73,5 +75,35 @@ router.post("/:id/retweet", async (req, res) => {
     req.sendStatus(400);
   });
   let repost = deletePost;
+  if (repost == null) {
+    repost = await Post.create({ postedby: userid, retweetdata: postid }).catch(
+      (err) => {
+        console.log(err);
+        req.sendStatus(400);
+      }
+    );
+  }
+  const option = deletePost ? "$pull" : "$addToSet";
+  req.session.navin = await User.findByIdAndUpdate(
+    userid,
+    {
+      [option]: { retweets: repost._id },
+    },
+    { new: true }
+  ).catch((err) => {
+    console.log(err);
+    req.sendStatus(400);
+  });
+  const post = await Post.findByIdAndUpdate(
+    postid,
+    {
+      [option]: { retweets: userid },
+    },
+    { new: true }
+  ).catch((err) => {
+    console.log(err);
+    req.sendStatus(400);
+  });
+  res.status(200).send(post);
 });
 module.exports = router;
