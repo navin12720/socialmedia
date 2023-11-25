@@ -8,6 +8,7 @@ const postschema = new Schema(
     likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
     retweets: [{ type: Schema.Types.ObjectId, ref: "User" }],
     retweetdata: { type: Schema.Types.ObjectId, ref: "Post" },
+    commentUser: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   },
   { timestamps: true, versionKey: false }
 );

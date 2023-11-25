@@ -1,0 +1,35 @@
+npm i nodemon -D express pug body-parser mongoose bcrypt express-session dotenv
+
+<div class="comment-section" data-id='${post._id}'>
+            <div class="textareadiv">
+              <textarea 
+                placeholder="Your Comments" 
+                class="txtcomment" 
+                data-id='${post._id}'></textarea>
+                <ion-icon name="close-outline" class="btnclear"></ion-icon>  
+              <button class="btnsend">
+                Send<ion-icon name="send-outline"></ion-icon></button>
+            </div>
+            <div class="comment-container">
+            <!-----user comment start---->
+              <div class="comment">
+                <div class="user-pic">
+                  <img src="/images/female.png" alt="profilepic" width="100px">
+                </div>
+                <div class="comment-body">
+                  <div class="comment-header">
+                    <div class="username">
+                      <a href="#">Username</a>
+                      <span>@username</span>
+                    </div>
+                    <span class="time">2 hours ago</span>
+                  </div>
+                  <div class="comment-message">
+                    <p> sample comment</p>
+                  </div>
+                </div>
+              </div>
+              <!-----user comment end---->
+            </div>
+            
+          </div>
