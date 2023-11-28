@@ -150,7 +150,7 @@ document.addEventListener("click", async function (event) {
     const posts = await response.json();
     // console.log(posts);
     likebtn.querySelector("span").textContent = posts.retweets.length || "";
-    if (posts.likes.includes(userLoggedIn._id)) {
+    if (posts.retweets.includes(userLoggedIn._id)) {
       likebtn.classList.add("active");
     } else {
       likebtn.classList.remove("active");
