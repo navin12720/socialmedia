@@ -17,4 +17,14 @@ mixin createPostForm(UserDetails)
         .textarea 
             textarea#postTextarea(placeholder="What's Happening?")  
             .button 
-                button#btnPost(disabled="") Post                               
+                button#btnPost(disabled="") Post  
+
+mixin deletePopupmodal()
+    .modal
+        .modal-content 
+            .modal-header 
+                h3 Are you sure to delete ?
+                span.close-button &times;
+            .modal-buttons 
+                button#btnDelete(type="button") Yes 
+                button(type="button" class="close-button") Close    

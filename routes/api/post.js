@@ -168,4 +168,18 @@ router.get("/:id/single", (req, res) => {
       return res.sendStatus(400);
     });
 });
+
+//Delete Post and comments
+router.delete("/:id", async (req, res) => {
+  const postid = req.params.id;
+  const userid = req.session.navin._id;
+  try {
+    await Post.findByIdAndDelete(postid);
+    await Post.deleteMany({ retweetdata: postid });
+    await Comment.deleteMany({ commentTo: postid });
+    return res.status(202).send({ status: "success" });
+  } catch (error) {
+    console.log(error);
+  }
+});
 module.exports = router;

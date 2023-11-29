@@ -133,6 +133,8 @@ a {
 .messages .post {
   margin: 10px 0px;
   cursor: pointer;
+  position: relative;
+  padding-top: 10px;
 }
 .content {
   display: flex;
@@ -162,7 +164,7 @@ a {
 }
 .time {
   font-size: 10px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 .post .footer {
   width: 600px;
@@ -264,4 +266,80 @@ a {
 }
 .message-container .body {
   pointer-events: none;
+}
+.del-button {
+  position: absolute;
+  font-size: 18px;
+  color: var(--color0);
+  right: 0;
+  top: 0;
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 35rem;
+  border-radius: 0.5rem;
+  margin-bottom: 10px;
+}
+.modal-header {
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+}
+.close-button {
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: var(--color1);
+  color: var(--color0);
+  padding: 5px 10px;
+}
+.close-button:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+#btnDelete {
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: var(--color1);
+  color: var(--color0);
+  padding: 5px 10px;
+}
+#btnDelete:hover {
+  background-color: var(--color2);
+  color: #fff;
 }

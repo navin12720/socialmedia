@@ -53,6 +53,10 @@ function createPost(post) {
   const isRetweet = post.retweetdata !== undefined;
   const Retweetedby = isRetweet ? post.postedby.username : null;
   post = isRetweet ? post.retweetdata : post;
+  let delbtn = "";
+  if (post.postedby._id == userLoggedIn._id) {
+    delbtn = `<button class="del-button">&times;</button>`;
+  }
   let retweettext = "";
   if (isRetweet) {
     retweettext = `
@@ -70,6 +74,7 @@ function createPost(post) {
   <div class="post" data-id='${post._id}'>
     <div class="retweettext">${retweettext}</div>
     <div class="content">
+    ${delbtn}
       <div class="user-pic" >
       <img src='${img}' alt='profile image' width="100px " >
       </div>
@@ -268,6 +273,33 @@ document.addEventListener("click", async function (event) {
     const postid = target.parentElement.parentElement.dataset.id;
     if (postid == undefined) return;
     window.location.href = "/post/" + postid;
+  }
+});
+
+//delete post
+const modal = document.querySelector(".modal");
+document.addEventListener("click", async function (event) {
+  const target = event.target;
+  if (target.classList.contains("del-button")) {
+    //delete post
+    modal.classList.add("show-modal");
+    const postid = target.parentElement.parentElement.dataset.id;
+    // console.log(postid);
+    const btnDelete = document.getElementById("btnDelete");
+    btnDelete.addEventListener("click", function () {
+      const url = `/api/post/${postid}`;
+      fetch(url, { method: "DELETE" }).then(() => {
+        modal.classList.remove("show-modal");
+        location.reload();
+      });
+    });
+  } else if (target.classList.contains("close-button")) {
+    modal.classList.remove("show-modal");
+  }
+});
+window.addEventListener("click", function (event) {
+  if (event.target === modal) {
+    modal.classList.remove("show-modal");
   }
 });
 /************************************************************ */
