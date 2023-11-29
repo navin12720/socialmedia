@@ -1,0 +1,10 @@
+extends layouts/main-layout.pug 
+block content
+    +navbar(UserDetails)
+    script. 
+        let requested_postid="!{postid}";
+    .container 
+        h1 View Post
+        .messages
+    script(src="/js/postclientside.js" defer="")  
+    script(src="/js/common.js" defer="")

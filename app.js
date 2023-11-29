@@ -23,10 +23,12 @@ app.use(express.static(staticuri));
 const registroute = require("./routes/registerroute");
 const loginroute = require("./routes/loginroute");
 const logoutroute = require("./routes/logoutroute");
+const postRoute = require("./routes/postroutes");
 
 app.use("/register", middleware.islogin, registroute);
 app.use("/login", middleware.islogin, loginroute);
 app.use("/logout", logoutroute);
+app.use("/post", middleware.isAlreadylogin, postRoute);
 //homepage
 app.get(["/", "/home"], middleware.isAlreadylogin, (req, res) => {
   const pagedata = {

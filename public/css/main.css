@@ -132,6 +132,7 @@ a {
 }
 .messages .post {
   margin: 10px 0px;
+  cursor: pointer;
 }
 .content {
   display: flex;
@@ -260,4 +261,7 @@ a {
 }
 .comment-section.commentActive {
   display: block;
+}
+.message-container .body {
+  pointer-events: none;
 }
