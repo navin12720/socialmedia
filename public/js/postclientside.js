@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const url = `/api/post/${requested_postid}/single`;
   const response = await fetch(url);
   const postdetails = await response.json();
-  console.log(postdetails);
+  // console.log(postdetails);
   const messages = document.querySelector(".messages");
   messages.innerHTML = createPost(postdetails.post);
   loadcomments(postdetails.comments);
@@ -55,23 +55,8 @@ function createPost(post) {
               <span>${post.likes.length || ""}</span>
             </button>
           </div>
-        <!---Comment---->
-          <div class="comment-section" data-id='${post._id}'>
-            <div class="textareadiv">
-              <textarea 
-                placeholder="Your Comments" 
-                class="txtcomment" 
-                data-id='${post._id}'></textarea>
-                <ion-icon name="close-outline" class="btnclear"></ion-icon>  
-              <button class="btnsend">
-                Send<ion-icon name="send-outline"></ion-icon></button>
+            <div class="comments">
             </div>
-            <div class="comment-container">
-              <div class="comments">
-              </div>
-            </div>  
-          </div>
-        <!----comment End--->
         </div>  
       </div>    
     </div>`;
@@ -80,7 +65,7 @@ function createPost(post) {
 //load comments
 function loadcomments(comments) {
   const commentcontainer = document.querySelector(".comments");
-  console.log(commentcontainer);
+  // console.log(commentcontainer);
   comments.forEach((comment) => {
     commentcontainer.innerHTML += `
           <div class="comment">
