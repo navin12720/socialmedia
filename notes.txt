@@ -33,3 +33,15 @@ npm i nodemon -D express pug body-parser mongoose bcrypt express-session dotenv
             </div>
             
           </div>
+
+1.user Registration         completed
+2.user login                completed
+3.create new post           completed
+4.retwwet post              completed
+5.Comments                  completed
+6.view post details         completed
+7.delete post               completed
+8.profile page
+9.follower and following
+10.group chat
+11.one on one chat

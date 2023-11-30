@@ -343,3 +343,43 @@ a {
   background-color: var(--color2);
   color: #fff;
 }
+/******************profile page**********************/
+
+.profile-head {
+  width: 100%;
+}
+.profile-container {
+  width: 100%;
+  height: 180px;
+  background-color: var(--primary);
+  position: relative;
+  border-radius: 10px;
+}
+.profile-container .pic {
+  width: 132px;
+  height: 132px;
+  position: absolute;
+  bottom: -66px;
+  background-color: var(--white);
+  margin-left: 15px;
+  border-radius: 50%;
+  border: 4px solid var(--white);
+}
+.profile-button-container {
+  text-align: right;
+  padding: 15px;
+  min-height: 66px;
+}
+.profile-btn {
+  border: 1px solid var(--color4);
+  padding: 5px 15px;
+  color: var(--color4);
+  border-radius: 60px;
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 18px;
+}
+.profile-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
